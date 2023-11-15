@@ -1,0 +1,55 @@
+./mysql -u root
+
+CREATE DATABASE StudentRecord;
+
+CREATE TABLE student (
+    StudentID int NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    LastName varchar(255) NOT NULL,
+    DateOfBirth varchar (255) NOT NULL,
+    Email varchar (255) NOT NULL,
+    PhoneNo int NOT NULL,
+    PRIMARY KEY(StudentID)
+);
+
+CREATE TABLE Course (
+    CourseID int NOT NULL,
+    CourseName varchar(255) NOT NULL,
+    Credits int,
+    PRIMARY KEY (CourseID)
+);
+
+CREATE TABLE Instructor (
+    InstructorID int NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    LastName varchar(255) NOT NULL,
+    Email varchar (255) NOT NULL,
+    PhoneNo varchar (255) NOT NULL,
+    PRIMARY KEY(InstructorID)
+);
+
+CREATE TABLE Enrollment (
+    EnrollmentID int NOT NULL,
+    StudentID int,
+    CourseID int,
+    Enrollmentdate  varchar (255)  NOT NULL,
+    Grade int NOT NULL,
+    FOREIGN KEY (StudentID) REFERENCES student(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+);
+
+INSERT INTO student (StudentID, FirstName, LastName, DateOfBirth, Email, PhoneNo)
+VALUES (01, "BRENTH", "BALDIVISO", "April 22,2002", "Bjaybaldiviso@gmail.com", 09098118823);
+SELECT * FROM student;
+
+INSERT INTO Course (CourseID, CourseName, Credits)
+VALUES (2002, "CIT17", 2002);
+SELECT * FROM Course;
+
+INSERT INTO Instructor (InstructorID, FirstName, LastName, Email, PhoneNo)
+VALUES (0202, "Prim", "Reyes", "Leonar@gmail.com", 0920391023);
+SELECT * FROM Instructor;
+
+INSERT INTO Enrollment (EnrollmentID, StudentID, CourseID, Enrollmentdate, Grade,)
+VALUES (2002, "Leonard", "hi", "22,2022", 99);
+SELECT * FROM Enrollment;
